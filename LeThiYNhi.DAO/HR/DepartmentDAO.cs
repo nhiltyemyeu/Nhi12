@@ -34,13 +34,13 @@ namespace LeThiYNhi.DAO.HR
             return lstDep;
         }
 
-        public DepartmentDTO ReadDep(int id)
+        public DepartmentDTO ReadDep(string id)
         {
             SqlConnection conn = CreateConnection();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("Create Proc GetDepartment as select * from Department where id=" + id.ToString(), conn);
-            cmd.CommandText = "GetDepartment";
-            cmd.CommandType = CommandType.StoredProcedure;
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Department WHERE id = @id", conn);
+            cmd.Parameters.AddWithValue("@id", id);
+           
             SqlDataReader reader = cmd.ExecuteReader();
             DepartmentDTO dep = new DepartmentDTO();
             if (reader.HasRows && reader.Read())

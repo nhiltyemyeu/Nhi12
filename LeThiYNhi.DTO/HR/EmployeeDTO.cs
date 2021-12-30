@@ -10,7 +10,7 @@ namespace LeThiYNhi.DTO.HR
     {
         public string IdEm { get; set; }
         public string Name { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         public bool Gender { get; set; }
         public string Playbirth { get; set; }
         public DepartmentDTO Department { get; set; }

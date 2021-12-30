@@ -42,7 +42,7 @@ namespace LeThiYNhi.GUI
             EmployeeDTO em = new EmployeeDTO();
             tbId.Text = "";
             tbName.Text = "";
-            dt.Value = em.Date;
+            dt.Text = "";
             tbNs.Text = "";
             ckbGt.Checked = false;
 
@@ -55,12 +55,6 @@ namespace LeThiYNhi.GUI
             em.Name = tbName.Text;
             em.Playbirth = tbNs.Text;
             em.Department = (DepartmentDTO)cbDv.SelectedItem;
-
-            //if (ckbGt.Checked)
-            //{
-            //    em.Gender = true;
-            //}
-
             emBLL.DeleteEmployee(em);
 
 
@@ -88,11 +82,14 @@ namespace LeThiYNhi.GUI
                 em.IdEm = tbId.Text;
                 em.Name = tbName.Text;
                 em.Playbirth = tbNs.Text;
+                em.Date = dt.Text;
                 em.Department = (DepartmentDTO)cbDv.SelectedItem;
                 emBLL.EditEmployee(em);
                 DataGridViewRow row = dgvEm.CurrentRow;
                 row.Cells[0].Value = em.IdEm;
                 row.Cells[1].Value = em.Name;
+                row.Cells[2].Value = em.Date;
+                
                 row.Cells[4].Value = em.Playbirth;
                 row.Cells[5].Value = em.DepartmentName;
                 
@@ -101,7 +98,7 @@ namespace LeThiYNhi.GUI
                     {
                     row.Cells[3].Value = true;
                     }
-                row.Cells[3].Value = ckbGt.Text;
+              
 
 
 
@@ -126,8 +123,8 @@ namespace LeThiYNhi.GUI
 
             tbId.Text = dgvEm.Rows[idx].Cells[0].Value.ToString();
             tbName.Text = dgvEm.Rows[idx].Cells[1].Value.ToString();
-            //dt.Text = dgvEm.Rows[idx].Cells[2].Value.ToString();
-            //ckbGt.Text = dgvEm.Rows[idx].Cells[3].Value.ToString();
+            dt.Text = dgvEm.Rows[idx].Cells[2].Value.ToString();
+            ckbGt.Text = dgvEm.Rows[idx].Cells[3].Value.ToString();
             
             tbNs.Text = dgvEm.Rows[idx].Cells[4].Value.ToString();
             cbDv.Text = dgvEm.Rows[idx].Cells[5].Value.ToString();
@@ -145,6 +142,7 @@ namespace LeThiYNhi.GUI
             {
                 em.IdEm = tbId.Text;
                 em.Name = tbName.Text;
+                em.Date = dt.Text;
                 em.Playbirth = tbNs.Text;
                 em.Department = (DepartmentDTO)cbDv.SelectedItem;
                 em.Gender = ckbGt.Checked;
@@ -155,10 +153,7 @@ namespace LeThiYNhi.GUI
                 emBLL.NewEmployee(em);
 
                 dgvEm.Rows.Add(em.IdEm, em.Name, em.Date, em.Gender, em.Playbirth, em.DepartmentName);
-                //if (ckbGt.Checked)
-                //{
-                //    em.Gender = true;
-                //}
+              
 
                 MessageBox.Show("Đã thêm mới khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

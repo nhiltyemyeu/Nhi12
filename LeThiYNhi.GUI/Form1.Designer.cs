@@ -49,9 +49,9 @@ namespace LeThiYNhi.GUI
             this.label4 = new System.Windows.Forms.Label();
             this.tbNs = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.dt = new System.Windows.Forms.DateTimePicker();
             this.ckbGt = new System.Windows.Forms.CheckBox();
             this.btAdd = new System.Windows.Forms.Button();
+            this.dt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEm)).BeginInit();
             this.SuspendLayout();
             // 
@@ -184,7 +184,6 @@ namespace LeThiYNhi.GUI
             this.Column4.DataPropertyName = "gender";
             this.Column4.HeaderText = "Giới tính";
             this.Column4.Name = "Column4";
-            this.Column4.Width = 60;
             // 
             // playbirth
             // 
@@ -222,13 +221,6 @@ namespace LeThiYNhi.GUI
             this.label5.TabIndex = 26;
             this.label5.Text = "Ngày sinh";
             // 
-            // dt
-            // 
-            this.dt.Location = new System.Drawing.Point(417, 12);
-            this.dt.Name = "dt";
-            this.dt.Size = new System.Drawing.Size(88, 20);
-            this.dt.TabIndex = 27;
-            // 
             // ckbGt
             // 
             this.ckbGt.AutoSize = true;
@@ -249,14 +241,21 @@ namespace LeThiYNhi.GUI
             this.btAdd.UseVisualStyleBackColor = true;
             this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
+            // dt
+            // 
+            this.dt.Location = new System.Drawing.Point(414, 12);
+            this.dt.Name = "dt";
+            this.dt.Size = new System.Drawing.Size(102, 20);
+            this.dt.TabIndex = 30;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(643, 342);
+            this.Controls.Add(this.dt);
             this.Controls.Add(this.btAdd);
             this.Controls.Add(this.ckbGt);
-            this.Controls.Add(this.dt);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tbNs);
             this.Controls.Add(this.label4);
@@ -292,18 +291,18 @@ namespace LeThiYNhi.GUI
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvEm;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tbNs;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox ckbGt;
+        private System.Windows.Forms.Button btAdd;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn playbirth;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox tbNs;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dt;
-        private System.Windows.Forms.CheckBox ckbGt;
-        private System.Windows.Forms.Button btAdd;
+        private System.Windows.Forms.TextBox dt;
     }
 }
 

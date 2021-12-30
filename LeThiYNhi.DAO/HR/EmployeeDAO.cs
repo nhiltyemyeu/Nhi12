@@ -16,7 +16,7 @@ namespace LeThiYNhi.DAO.HR
         {
             SqlConnection conn = CreateConnection();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("Create Proc GetEmployee as select * from Employee", conn);
+            SqlCommand cmd = new SqlCommand("select * from Employee", conn);
             cmd.CommandText = "GetEmployee";
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -31,8 +31,9 @@ namespace LeThiYNhi.DAO.HR
                 EmployeeDTO em = new EmployeeDTO();
                 em.IdEm = reader["idemploy"].ToString();
                 em.Name = reader["name"].ToString();
-                em.Date = DateTime.Now;
-                em.Department = are.ReadDep(int.Parse(reader["iddepart"].ToString()));
+                em.Date = reader["datebirth"].ToString();
+                em.Gender = (bool)reader["gender"];
+                em.Department = are.ReadDep(reader["iddepart"].ToString());
                 em.Playbirth = reader["playbirth"].ToString();
                 
                 lstEm.Add(em);
@@ -59,8 +60,9 @@ namespace LeThiYNhi.DAO.HR
                 //khai báo các thông tin của tham số truyền vào
                 cmd.Parameters.Add("@idemploy", SqlDbType.Int).Value = em.IdEm;
                 cmd.Parameters.Add("@name", SqlDbType.NVarChar).Value = em.Name;
-                cmd.Parameters.Add("@datebirth", SqlDbType.DateTime).Value = em.Date;
-                cmd.Parameters.Add("@iddepart", SqlDbType.Int).Value = em.Department.Id;
+                cmd.Parameters.Add("@datebirth", SqlDbType.NVarChar).Value = em.Date;
+                cmd.Parameters.Add("@gender", SqlDbType.Bit).Value = em.Gender;
+                cmd.Parameters.Add("@iddepart", SqlDbType.NVarChar).Value = em.Department.Id;
                 cmd.Parameters.Add("@playbirth", SqlDbType.NVarChar).Value = em.Playbirth;
                 
 
@@ -103,7 +105,7 @@ namespace LeThiYNhi.DAO.HR
                 //khai báo các thông tin của tham số truyền vào
                 cmd.Parameters.Add("@idemploy", SqlDbType.Int).Value = em.IdEm;
                 cmd.Parameters.Add("@name", SqlDbType.NVarChar).Value = em.Name;
-                cmd.Parameters.Add("@datebirth", SqlDbType.DateTime).Value = em.Date;
+                cmd.Parameters.Add("@datebirth", SqlDbType.NVarChar).Value = em.Date;
                 cmd.Parameters.Add("@iddepart", SqlDbType.Int).Value = em.Department.Id;
                 cmd.Parameters.Add("@playbirth", SqlDbType.NVarChar).Value = em.Playbirth;
                 
