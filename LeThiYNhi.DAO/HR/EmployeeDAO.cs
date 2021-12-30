@@ -16,7 +16,7 @@ namespace LeThiYNhi.DAO.HR
         {
             SqlConnection conn = CreateConnection();
             conn.Open();
-            SqlCommand cmd = new SqlCommand("select * from Employee", conn);
+            SqlCommand cmd = new SqlCommand("Create proc GetDepartment as select * from Employee", conn);
             cmd.CommandText = "GetEmployee";
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -25,7 +25,7 @@ namespace LeThiYNhi.DAO.HR
 
 
             List<EmployeeDTO> lstEm = new List<EmployeeDTO>();
-            DepartmentDAO are = new DepartmentDAO();
+            DepartmentDAO dep = new DepartmentDAO();
             while (reader.Read())
             {
                 EmployeeDTO em = new EmployeeDTO();
@@ -33,7 +33,7 @@ namespace LeThiYNhi.DAO.HR
                 em.Name = reader["name"].ToString();
                 em.Date = reader["datebirth"].ToString();
                 em.Gender = (bool)reader["gender"];
-                em.Department = are.ReadDep(reader["iddepart"].ToString());
+                em.Department = dep.ReadDep(reader["iddepart"].ToString());
                 em.Playbirth = reader["playbirth"].ToString();
                 
                 lstEm.Add(em);
